@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+class Node {
+    public :
+        int data;
+        Node * next ;
+        
+        Node(int value) {
+            data=value;
+            next=nullptr;
+        }
+        
+};
+
+class Stack {
+    public:
+        Node* top;
+        Stack(){
+            top=nullptr;
+        }
+        
+    void push(int value){
+        Node *newNode = new Node(value);
+        if(top==nullptr){
+            top=newNode;
+            
+        }else{
+            newNode->next=top;
+            top=newNode;
+        }
+    }
+    
+    void pop(){
+        Node * temp = top;
+        if(top==nullptr){
+            cout<<"This stcak is empty"<<endl;
+        }else{
+            top=temp->next;
+            temp=nullptr;
+        }
+    }
+    
+    void print(){
+        Node * temp = top;
+        for(temp=top;temp!=nullptr;temp=temp->next){
+            cout<<temp->data<<endl;
+        }
+        cout<<"***********"<<endl;
+    }
+    void reverse(){
+        
+    Node* prev = nullptr;
+    Node* current = top;
+    Node* nextNode = nullptr;
+
+    while(current != nullptr) {
+        nextNode = current->next; 
+        current->next = prev; 
+        prev = current; 
+        current = nextNode; 
+    }
+    top = prev; 
+    }
+    
+};
+
+int main()
+{
+    Stack *s=new Stack();
+    s->push(5);
+    s->push(10);
+    s->push(15);
+    s->push(20);
+    s->print();
+    //s->pop();
+    //s->pop();
+    //s->pop();
+    //s->print();
+    s->reverse();
+    s->print();
+    return 0;
+}
