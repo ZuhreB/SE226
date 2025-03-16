@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+void reverse(int array [], int array_boyut);
+void intersection(int array1[], int array2[], int * size1, int * size2);
+bool isPalindrome(string str);
+void palindrome(string array[], int size);
+
+int main()
+{
+    string arr[] = {"madam", "hello", "level", "radar"};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    palindrome(arr, size);
+    int array [] = {1,2,3,4,5,6};
+    int array2 []= {2,3,7,6,0,5,6,7,8,9,12};
+    int a=sizeof(array) / sizeof(arr[0]);
+    int b=sizeof(array2) / sizeof(arr[0]);
+//intersection(array,array2,&a,&b);
+//reverse(array,6);
+    return 0;
+}
+void reverse(int array [], int array_boyut){
+    for(int i= array_boyut-1 ;i>=0;i--){
+        cout<<array[i]<<endl;
+    }
+}
+void intersection(int array1[], int array2[], int * size1, int * size2){
+    int maxSize = (*size1 < *size2) ? *size1 : *size2; 
+    int *result = new int[maxSize]; 
+
+    int k = 0;
+    for (int i = 0; i < *size1; i++) {
+        for (int j = 0; j < *size2; j++) {
+            if (array1[i] == array2[j]) {
+                result[k++] = array1[i];
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < k; i++) {
+        cout << result[i] << endl;
+    }
+}
+
+bool isPalindrome(string str) {
+    int left = 0;
+    int right = str.length() - 1;
+    while (left < right) {
+        if (str[left] != str[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+
+void palindrome(string array[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (isPalindrome(array[i])) {
+            cout << array[i] << " is a palindrome." << endl;
+        }
+    }
+}
+
