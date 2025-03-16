@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+class Student{
+        public:
+        int ıd;
+        string name;
+        
+        Student(int ID, string NAME){
+            ıd=ID;
+            name=NAME;
+        }
+        Student(){
+            
+        }
+    };
+    
+int main()
+{
+    Student s1(1, "balım");
+    Student s2(2, "havvam");
+    Student s3(3, "ben");
+    Student* pointer = new Student[3]; // 3 öğrencilik bir dizi oluştur
+    pointer[0] = s1; // pointer[0] elemanına s1'i atama
+    pointer[1] = s2; // pointer[1] elemanına s2'yi atama
+    pointer[2] = s3; // pointer[2] elemanına s3'ü atama
+    for (int i = 0; i < 3; i++) {
+        cout << pointer[i].ıd; // pointer[i] üzerinden elemanlara erişme
+        cout<<pointer[i].name<<endl;
+    } 
+    
+    /*
+    int nums [] = {1,4,2,5,7,8,5,3,4,8,9};
+    int large=nums[1];
+    int second_large=nums[0];
+    for(int i=0;i<sizeof(nums)/sizeof(int);i++){
+        if(large<nums[i]){
+            large=nums[i];
+        }
+    }
+
+    for(int i=0;i<sizeof(nums)/sizeof(int);i++){
+        if(second_large<nums[i]&&nums[i]!=large){
+            second_large=nums[i];
+        }
+    }
+    cout<<large<<endl;
+    cout<<second_large<<endl;
+    
+    
+    *******************
+    
+    
+    int firstvalue=5,secondvalue=15;
+    int *p1,*p2;
+    p1=&firstvalue;
+    p2=&secondvalue;
+    *p1=10;
+    *p2=*p1;
+    p1=p2;
+    *p1=20;
+    cout<<"first"<<firstvalue<<endl;
+    cout<<"second"<<secondvalue<<endl;
+    
+    
+     *****************
+    */
+    
+    
+    
+    return 0;
+}
