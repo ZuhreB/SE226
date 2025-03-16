@@ -1,0 +1,116 @@
+#include <iostream>
+#include <new>
+using namespace std;
+
+class Node {
+    public :
+    int data;
+    Node *next;
+    Node(int value , Node *next){
+        data=value;
+        next=next;
+    }
+};
+class Queue { 
+   public :
+   Node *head =nullptr;
+   Node *tail = nullptr;
+    
+    void enqueue(int value){
+        
+        if(head==nullptr){
+            head= new Node(value, nullptr);
+            tail=head;
+        }else{
+            Node *newNode=new Node(value,nullptr);
+            tail->next=newNode;
+            tail=newNode;
+        }
+    
+    }
+    
+    void dequeue(){
+        Node *temp = head;
+        if(head==nullptr){
+            cout<<"there are not node to delete"<<endl;
+        }
+        else{
+            head=head->next;
+            delete temp;
+            temp=nullptr;
+        }
+    }
+    
+    void print(){
+        Node *temp = head; 
+        for(temp=head;temp!=nullptr;temp=temp->next){
+            cout<<temp->data<<endl;
+        }
+    }
+    
+    int top (){
+        if(head!=nullptr){
+        return head->data;
+        }
+        else {
+            return -1;
+        }
+    }
+    
+    bool isEmpty(){
+        if(head==nullptr){
+            cout<<"yes it is empty"<<endl;
+            return true;
+        }
+        cout<<"not empty"<<endl;
+        return false;
+    }
+    
+    int size (){
+        Node *temp=head;
+        int size=0;
+        while(temp!=nullptr){
+            size++;
+            temp=temp->next;
+        }
+        return size;
+    }
+    
+   /* void reverse(){
+        Node *temp=head;
+        Node * before=temp->next;
+        Node * after=head;
+        for(before=temp->next;before->next!=nullptr;before->next->next){
+            after->next=before->next;
+            head=before;
+            before=before->next->next;
+        }
+    }
+    */    
+    
+    
+};
+int main()
+{
+    Queue *q= new Queue();
+    q->enqueue(3);
+    q->enqueue(5);
+    q->enqueue(7);
+    q->enqueue(9);
+    q->print();
+    cout<<"**************"<<endl;
+    q->dequeue();
+    q->print();
+    cout<<"**************"<<endl;
+    int top_num=q->top();
+    cout<<top_num<<endl;
+    q->dequeue();
+    q->dequeue();
+    q->isEmpty();
+    int size_of= q->size();
+    cout<<"size of queue "<<size_of<<endl;
+    //q->reverse();
+    return 0;
+}
+
+
