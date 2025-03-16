@@ -1,0 +1,35 @@
+#include <cmath>
+#include <iostream>
+
+using namespace std;
+
+double recursiveFunction(double);
+double recursiveFunction();
+int main() {
+    double number;
+    cout << "Give me a number: ";
+    cin >> number;
+    double totalResult = recursiveFunction();
+    cout << "Total result: " << totalResult << endl;
+    return 0;
+}
+
+double recursiveFunction(double number) {
+    if (number == 0) {
+        return 0.0;
+    } else {
+        double result = pow(-1.0, number + 1.0) / number;
+        return result + recursiveFunction(number - 1);
+    }
+}
+
+
+double recursiveFunction() {
+    double number;
+    cout << "Give me a number: ";
+    cin >> number;
+    return recursiveFunction(number);
+}
+
+    
+    
